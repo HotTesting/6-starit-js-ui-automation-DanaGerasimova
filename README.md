@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/StartITProtractorJS/javascript-automation-webdriverio.svg?branch=master)](https://travis-ci.org/StartITProtractorJS/javascript-automation-webdriverio)
+[![Build Status](https://travis-ci.org/StartITProtractorJS/6-starit-js-ui-automation-DanaGerasimova.svg?branch=master)](https://travis-ci.org/StartITProtractorJS/6-starit-js-ui-automation-DanaGerasimova)
 
 # startit movie finder
 Working project for startit students
