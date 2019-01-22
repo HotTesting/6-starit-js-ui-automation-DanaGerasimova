@@ -8,7 +8,7 @@ describe('Create Account', function () {
         console.log('--Test passed! 1')
     });
 
-    it('Open Sign In block', function(){
+    /*it('Open Sign In block', function(){
         const mainMenu = $('#default-menu');
         const signIn = mainMenu.$('a[data-toggle="dropdown"]');
         signIn.click();
@@ -17,6 +17,15 @@ describe('Create Account', function () {
 
         const newCustomer = dropdowMenu.$('a[href*="http://ip-5236.sunline.net.ua:38015/create_account"]');
         newCustomer.click();
+        expect($('#box-create-account').isVisible()).to.be.true;
+        console.log('--Test passed! 2')
+    })*/
+
+    it('Open Sign In block', function(){
+        $('li.account a').click();
+        browser.pause(1000)
+        $('.dropdown-menu a[href*="create_account"]').click()
+        browser.pause(1000)
         expect($('#box-create-account').isVisible()).to.be.true;
         console.log('--Test passed! 2')
     })
@@ -51,11 +60,11 @@ describe('Create Account', function () {
         const country = form.$('select[name="country_code"]');
         country.addValue('3');
 
-        const zone = form.$('select[name="zone_code"]');
-        zone.addValue('3');
+        /*const zone = form.$('select[name="zone_code"]');
+        zone.addValue('3');*/
         
         const email = form.$('input[name="email"]');
-        email.addValue('daniela.gerasimowa@ukr.net');
+        email.addValue('kjhjjjjk@ukr.net');
 
         const phone = form.$('input[name="phone"]');
         phone.addValue('0634545455');
