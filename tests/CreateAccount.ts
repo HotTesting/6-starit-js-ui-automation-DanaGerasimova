@@ -30,6 +30,16 @@ describe('Create Account', function () {
         console.log('--Test passed! 2')
     })
 
+    function makeid() {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      
+        for (var i = 0; i < 5; i++)
+          text += possible.charAt(Math.floor(Math.random() * possible.length));
+      
+        return text;
+    }
+
     it('Fill the input fields', function(){
         const form = $('form[name="customer_form"]');
 
@@ -64,7 +74,7 @@ describe('Create Account', function () {
         zone.addValue('3');*/
         
         const email = form.$('input[name="email"]');
-        email.addValue('kj@ukr.net');
+        email.addValue(makeid()+'@ukr.net');
 
         const phone = form.$('input[name="phone"]');
         phone.addValue('0634545455');
