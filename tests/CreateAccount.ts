@@ -64,7 +64,7 @@ describe('Create Account', function () {
         zone.addValue('3');*/
         
         const email = form.$('input[name="email"]');
-        email.addValue('kjhjjjjk@ukr.net');
+        email.addValue('kj@ukr.net');
 
         const phone = form.$('input[name="phone"]');
         phone.addValue('0634545455');
