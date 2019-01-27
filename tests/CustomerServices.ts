@@ -1,21 +1,9 @@
 import { expect } from "chai";
 
 describe('Customer Service', function () {
-    it('Open the homepage', function () {
-        browser.url('/')
-        const title = browser.getTitle();
-        expect(title).to.be.equal('My Store | Online Store');
-        console.log('--Test passed! 1')
-        browser.pause(1000)
-    });
-
-    it('Open the Customer Service page', function(){
-        const mainMenu = $('#default-menu');
-        const pageLink = mainMenu.$('a[href*="http://ip-5236.sunline.net.ua:38015/customer-service-s-0"]');
-        pageLink.click();
-        browser.pause(2000)
-        expect($('#box-contact-us').isVisible()).to.be.true;
-        console.log('--Test passed! 2')
+    before(function() {
+        browser.url('/');
+        browser.click('.customer-service');
     });
 
     it('Filling the input fields', function(){

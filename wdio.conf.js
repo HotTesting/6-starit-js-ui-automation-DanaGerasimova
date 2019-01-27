@@ -21,4 +21,8 @@ exports.config = {
     mochaOpts: {
         ui: 'bdd'
     }
+
+    /*beforeTest: function(){
+        console.log('global before test');
+    }*/
 }
