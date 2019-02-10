@@ -35,8 +35,9 @@ describe('Buy a duck', function () {
         checkout.typeLastName("Test2");
         checkout.typeAddress1("address1");
         checkout.typeAddress2("address2");
-        checkout.typePostCode('116035');
+        checkout.typePostCode('11603');
         checkout.typeCity("City");
+        checkout.typeCountry('UA');
         checkout.typeEmail(Math.random()+'@ukr.net');
         checkout.typePhone('+380935407959');
         
@@ -59,8 +60,9 @@ describe('Buy a duck', function () {
         checkout.typeLastName("Test25");
         checkout.typeAddress1("address15");
         checkout.typeAddress2("address25");
-        checkout.typePostCode('116035');
+        checkout.typePostCode('11603');
         checkout.typeCity("CityM");
+        checkout.typeCountry('UA');
         checkout.typeEmail(Math.random()+'@ukr.net');
         checkout.typePhone('+380935407958');
         
@@ -72,5 +74,38 @@ describe('Buy a duck', function () {
         addToCart.addItemToCart();
         addToCart.waitForPopUp();  
     });  
+
+    it("Buying yellow duck with Different Shipping Address", function() {
+        setOptions.selectItemSize('Small');
+        addToCart.addItemToCart();
+        productBox.closeProductBox();
+
+        browser.waitUntil(() => {
+            return ($('#cart span.quantity').getText()=='1')
+        }, 500, 'Item is not added');
+
+        addToCart.checkItemInCart();     
+
+        checkout.typeFirstName("Test15");
+        checkout.typeLastName("Test25");
+        checkout.typeAddress1("address15");
+        checkout.typeAddress2("address25");
+        checkout.typePostCode('11603');
+        checkout.typeCity("CityM");
+        checkout.typeCountry('UA');
+        checkout.typeEmail(Math.random()+'@ukr.net');
+        checkout.typePhone('+380935407958');
+
+        checkout.addDifferentShippingAddress();
+        checkout.typeShippingFisrtName('Анна');
+        checkout.typeShippingLastName('Анна');
+        checkout.typeShippingAdress1('глушкова');
+        checkout.typeShippingPostalCode('11603');
+        checkout.typeShippingCity('Киев');  
+        checkout.typeShippingCountry('UA');
+        
+        checkout.saveChanges();
+        checkout.confirmOrder();
+    });
 })
 

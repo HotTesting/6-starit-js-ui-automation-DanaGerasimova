@@ -51,11 +51,6 @@ export class Checkout{
     }
 
     shippingAdress(shippingAddressDetails: IDifferentShippingAddress): any {
-        browser.waitUntil(() => {
-                return (browser.getAttribute('h3 input[name = "different_shipping_address"]', 'checked')!=null);
-            }, 3000, "Different Shipping Address checkbox is not checked"
-        );
-
         this.typeShippingPostalCode(shippingAddressDetails.postalCode);
         this.typeShippingCity(shippingAddressDetails.city);
         this.typeShippingAdress1(shippingAddressDetails.address1);
@@ -141,6 +136,34 @@ export class Checkout{
         const shippingLastNameInput = 'input[name="shipping_address[lastname]"]';
         browser.waitForVisible(shippingLastNameInput, 5000);
         $(shippingLastNameInput).setValue(shippingLastName);
+    }
+
+    typeShippingCountry(country: string): any{
+        const shippingCountryInput = 'select[name="shipping_address[country_code]"]';
+        browser.waitForVisible(shippingCountryInput, 5000);
+        $(shippingCountryInput).selectByValue(country);        
+
+        browser.waitUntil(() => {
+            return $(shippingCountryInput).getValue()==country
+        }, 1000, 'Option is not selected');
+    }
+
+    typeCountry(country: string): any{
+        const countryInput = 'select[name="country_code"]';
+        browser.waitForVisible(countryInput, 5000);
+        $(countryInput).selectByValue(country);        
+
+        browser.waitUntil(() => {
+            return $(countryInput).getValue()==country
+        }, 1000, 'Option is not selected');
+    }
+
+    addDifferentShippingAddress(): any{
+        $('input[name = "different_shipping_address"]').click();
+        
+        browser.waitUntil(() => {
+            return (browser.getAttribute('h3 input[name = "different_shipping_address"]', 'checked')!=null);
+        }, 3000, "Different Shipping Address checkbox is not checked");
     }
 
     saveChanges(): any{
