@@ -1,9 +1,11 @@
-import { assert } from "chai";
-import {homePage} from "./HomePage";
+import { expect } from "chai";
+/*import {homePage} from "./HomePage";
 import {productBox} from "./ProductBox";
 import {setOptions} from './SetOptions';
 import {addToCart} from './AddToCart';
 import {checkout} from './Checkout';
+import {confirmation} from './Confirmation';*/
+import {homePage, productBox, setOptions, addToCart, checkout, confirmation} from "../pageObjects";
 
 
 describe('Buy a duck', function () {
@@ -43,6 +45,13 @@ describe('Buy a duck', function () {
         
         checkout.saveChanges();
         checkout.confirmOrder();
+        /*expect(confirmation.isLoaded()).to.equal(
+            true,
+            "Expected that confirmation page appears"
+          );
+          expect(confirmation.confirmationTitle()).to.match(
+            /Your order #.* is successfully completed!/
+        );*/
     });
 
     it("Buying yellow duck", function() {
@@ -68,6 +77,13 @@ describe('Buy a duck', function () {
         
         checkout.saveChanges();
         checkout.confirmOrder();
+        /*expect(confirmation.isLoaded()).to.equal(
+            true,
+            "Expected that confirmation page appears"
+          );
+          expect(confirmation.confirmationTitle()).to.match(
+            /Your order #.* is successfully completed!/
+        );*/
     }); 
       
     it("Buying yellow duck without options", function() {
@@ -106,6 +122,13 @@ describe('Buy a duck', function () {
         
         checkout.saveChanges();
         checkout.confirmOrder();
+        /*expect(confirmation.isLoaded()).to.equal(
+            true,
+            "Expected that confirmation page appears"
+          );
+          expect(confirmation.confirmationTitle()).to.match(
+            /Your order #.* is successfully completed!/
+        );*/
     });
 
     it("Buying yellow duck with Create Account checked", function() {
@@ -135,6 +158,13 @@ describe('Buy a duck', function () {
         
         checkout.saveChanges();
         checkout.confirmOrder();
+        /*expect(confirmation.isLoaded()).to.equal(
+            true,
+            "Expected that confirmation page appears"
+          );
+          expect(confirmation.confirmationTitle()).to.match(
+            /Your order #.* is successfully completed!/
+        );*/
     });
 })
 
