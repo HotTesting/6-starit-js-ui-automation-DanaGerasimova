@@ -1,11 +1,11 @@
-import { expect } from "chai";
+/*import { expect } from "chai";
 import {homePage} from "./HomePage";
 import {productBox} from "./ProductBox";
 import {setOptions} from './SetOptions';
 import {addToCart} from './AddToCart';
 import {checkout} from './Checkout';
-import {confirmation} from './Confirmation';
-//import {homePage, productBox, setOptions, addToCart, checkout, confirmation} from "../pageObjects";
+import {confirmation} from './Confirmation';*/
+import {homePage, productBox, setOptions, addToCart, checkout, confirmation} from "../PageObjects";
 
 
 describe('Buy a duck', function () {
