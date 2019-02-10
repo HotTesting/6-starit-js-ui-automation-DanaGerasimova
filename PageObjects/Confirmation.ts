@@ -1,4 +1,4 @@
-import { BasePage } from './base';
+import { BasePage } from './Base';
 export class Confirmation extends BasePage {
   private titleText: string = "h1.title";
   
