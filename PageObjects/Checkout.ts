@@ -55,7 +55,7 @@ export class Checkout{
                 return (browser.getAttribute('h3 input[name = "different_shipping_address"]', 'checked')!=null);
             }, 3000, "Different Shipping Address checkbox is not checked"
         );
-        
+
         this.typeShippingPostalCode(shippingAddressDetails.postalCode);
         this.typeShippingCity(shippingAddressDetails.city);
         this.typeShippingAdress1(shippingAddressDetails.address1);
@@ -145,7 +145,7 @@ export class Checkout{
 
     saveChanges(): any{
         $('button[name="save_customer_details"]').click();
-        browser.pause(1000); //TODO: rewrite to some wait
+        browser.pause(2000); //TODO: rewrite to some wait
     }
     
     confirmOrder(): any{
@@ -153,7 +153,7 @@ export class Checkout{
 
         browser.waitUntil(() => {
             return (browser.getTitle() == 'Order Success | My Store')
-        }, 2000, 'Button is not active');
+        }, 5000, 'Button is not active');
     }
 }
 
