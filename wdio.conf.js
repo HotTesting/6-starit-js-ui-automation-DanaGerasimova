@@ -20,7 +20,7 @@ exports.config = {
     framework: 'mocha',
     mochaOpts: {
         ui: 'bdd',
-        timeout: 120000 // 2 mins
+        timeout: 240000 // 2 mins
     }
 
     /*beforeTest: function(){
