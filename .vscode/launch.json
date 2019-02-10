@@ -1,0 +1,30 @@
+
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "node",
+        "request": "launch", // либо attach - подключиться к запущенному процессу
+        "name": "Debug", // читаемое имя в дроп дауне
+        "program": "${workspaceFolder}/node_modules/.bin/wdio", // абсолютный путь к исполняемому файлу (локальный wdio)
+        "sourceMaps": true, // использовать map файлы или нет
+        "args": [
+          "./wdio.conf.debug.js", 
+          // "--spec", 
+          // "'./tests/parallel/*.ts'" // путь к файлу с тестами
+          // "--grep", // ранить только конкретный тест
+          // "#23842" // указываем, какой тест ранить (тег); можно указывать regexp (f.ex. #45689|#45690)
+        ],
+        "env": { // переменные окружения
+          "DEBUG": "1",
+          "SUT_URL": "http://ip-5236.sunline.net.ua:38015"
+        },
+        "port": 5858,
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "neverOpen"
+      }
+    ]
+  }

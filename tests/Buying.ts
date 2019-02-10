@@ -44,7 +44,7 @@ describe('Buy a duck', function () {
         }, 500, 'Item is not added');
     })
 
-    it('Check an item to cart', function(){
+    it('Check an item in cart', function(){
         browser.url('/checkout');
         browser.waitUntil(() => {
             return $('.item').isVisible()

@@ -3,7 +3,7 @@ require('ts-node').register()
 
 exports.config = {
     specs: [
-        './tests/**/*.ts'
+        './PageObjects/**/BuyingPO.ts'
     ],
     port: '9515',
     path: '/',
