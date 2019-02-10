@@ -19,7 +19,8 @@ exports.config = {
     baseUrl: 'http://ip-5236.sunline.net.ua:38015',
     framework: 'mocha',
     mochaOpts: {
-        ui: 'bdd'
+        ui: 'bdd',
+        timeout: 120000 // 2 mins
     }
 
     /*beforeTest: function(){
