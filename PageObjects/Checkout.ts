@@ -27,6 +27,11 @@ export interface IDifferentShippingAddress {
     company?: string
 }
 
+export interface ICreateAccount {
+    desiredPassword: string
+    confirmPassword: string
+}
+
 export class Checkout{
 
     proceedOrderWith(customerDetails: ICustomerDetails): any {
@@ -39,9 +44,9 @@ export class Checkout{
         this.typeEmail(customerDetails.email);
         this.typePhone(customerDetails.phone);
         // If optional fields needs to be filled
-        // if(customerDetails.country) {
-        //   this.typeCountry(customerDetails.country)
-        // }
+        if(customerDetails.country) {
+           this.typeCountry(customerDetails.country)
+        }
     
         // if (customerDetails.differentShippingAddress) {
         //   this.enterDifferentShippingAddress(customerDetails.differentShippingAddress)
@@ -164,6 +169,26 @@ export class Checkout{
         browser.waitUntil(() => {
             return (browser.getAttribute('h3 input[name = "different_shipping_address"]', 'checked')!=null);
         }, 3000, "Different Shipping Address checkbox is not checked");
+    }
+
+    addCreateAccount(): any{
+        $('input[name = "create_account"]').click();
+        
+        browser.waitUntil(() => {
+            return (browser.getAttribute('h3 input[name = "create_account"]', 'checked')!=null);
+        }, 3000, "Create Account checkbox is not checked");
+    }
+
+    typeDesiredPassword(desiredPassword: string): any{
+        const desiredPasswordInput = 'input[name="password"]';
+        browser.waitForVisible(desiredPasswordInput, 5000);
+        $(desiredPasswordInput).setValue(desiredPassword);
+    }
+
+    typeConfirmPassword(confirmPassword: string): any{
+        const confirmPasswordInput = 'input[name="confirmed_password"]';
+        browser.waitForVisible(confirmPasswordInput, 5000);
+        $(confirmPasswordInput).setValue(confirmPassword);
     }
 
     saveChanges(): any{

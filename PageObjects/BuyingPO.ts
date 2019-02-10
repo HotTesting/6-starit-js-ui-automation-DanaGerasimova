@@ -75,7 +75,7 @@ describe('Buy a duck', function () {
         addToCart.waitForPopUp();  
     });  
 
-    it("Buying yellow duck with Different Shipping Address", function() {
+    it("Buying yellow duck with Different Shipping Address checked", function() {
         setOptions.selectItemSize('Small');
         addToCart.addItemToCart();
         productBox.closeProductBox();
@@ -103,6 +103,35 @@ describe('Buy a duck', function () {
         checkout.typeShippingPostalCode('11603');
         checkout.typeShippingCity('Киев');  
         checkout.typeShippingCountry('UA');
+        
+        checkout.saveChanges();
+        checkout.confirmOrder();
+    });
+
+    it("Buying yellow duck with Create Account checked", function() {
+        setOptions.selectItemSize('Small');
+        addToCart.addItemToCart();
+        productBox.closeProductBox();
+
+        browser.waitUntil(() => {
+            return ($('#cart span.quantity').getText()=='1')
+        }, 500, 'Item is not added');
+
+        addToCart.checkItemInCart();     
+
+        checkout.typeFirstName("Test15");
+        checkout.typeLastName("Test25");
+        checkout.typeAddress1("address15");
+        checkout.typeAddress2("address25");
+        checkout.typePostCode('11603');
+        checkout.typeCity("CityM");
+        checkout.typeCountry('UA');
+        checkout.typeEmail(Math.random()+'@ukr.net');
+        checkout.typePhone('+380935407958');
+
+        checkout.addCreateAccount();
+        checkout.typeDesiredPassword('111111');
+        checkout.typeConfirmPassword('111111');
         
         checkout.saveChanges();
         checkout.confirmOrder();
