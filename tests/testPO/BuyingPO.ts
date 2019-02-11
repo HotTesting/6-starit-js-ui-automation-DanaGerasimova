@@ -1,28 +1,67 @@
-import {homePage, productBox, setOptions, addToCart, checkout, confirmation} from "../../PageObjects";
+import {homePage, signIn, productBox, setOptions, addToCart, checkout, confirmation} from "../../PageObjects";
 
 
 describe('Buy a duck', function () {
 
+    let quantity;
+
     beforeEach(function(){
         homePage.openingHomePage();
-        productBox.openingProductBox();
-}); 
+        quantity = $('#cart span.quantity').getText();
+    }); 
 
     afterEach(function(){   
         browser.deleteCookie();
     })
 
+    it("Buying yellow duck be logged in", function() {
+        signIn.openSignInBlock();
+        signIn.typeEmail('testDana@ukr.net');
+        signIn.typePassword('123456');
+        signIn.login();
+
+        productBox.openingProductBox();
+        setOptions.selectItemSize('Small');
+        addToCart.addItemToCart();
+        productBox.closeProductBox();
+
+        browser.waitUntil(() => {
+            return ($('#cart span.quantity').getText()== String(+quantity + +"1"))
+        }, 5000, 'Item is not added');
+
+        addToCart.checkItemInCart();     
+
+        if(checkout.checkAddress1()==null) checkout.typeAddress1('address1');
+        if(checkout.checkAddress2()==null) checkout.typeAddress2('address2');
+        if(checkout.checkPostCode()==null) checkout.typePostCode('11603');
+        if(checkout.checkCity()==null) checkout.typeCity("CityM");
+        checkout.typeCountry('UA');
+        if(checkout.checkPhone()==null) checkout.typePhone('+380935407958');      
+
+        checkout.saveChanges();
+        checkout.confirmOrder();
+    });
+
+    it("Sign In", function() {
+        signIn.openSignInBlock();
+        signIn.typeEmail('daniela.gerasimowa@ukr.net');
+        signIn.typePassword('123456');
+        signIn.login();
+    });
+
     it("Buying N yellow ducks", function() {
-        const quantity = '3';
+        productBox.openingProductBox();
+
+        const q = '3';
 
         setOptions.selectItemSize('Small');
-        setOptions.setItemQuantity(quantity);
+        setOptions.setItemQuantity(q);
         addToCart.addItemToCart();       
         productBox.closeProductBox();
 
         browser.waitUntil(() => {
-            return ($('#cart span.quantity').getText()==quantity)
-        }, 500, 'Item is not added');
+            return ($('#cart span.quantity').getText()== String(+quantity + +q))
+        }, 5000, 'Item is not added');
 
         addToCart.checkItemInCart();     
 
@@ -38,23 +77,17 @@ describe('Buy a duck', function () {
         
         checkout.saveChanges();
         checkout.confirmOrder();
-        /*expect(confirmation.isLoaded()).to.equal(
-            true,
-            "Expected that confirmation page appears"
-          );
-          expect(confirmation.confirmationTitle()).to.match(
-            /Your order #.* is successfully completed!/
-        );*/
     });
 
     it("Buying yellow duck", function() {
+        productBox.openingProductBox();
         setOptions.selectItemSize('Small');
         addToCart.addItemToCart();
         productBox.closeProductBox();
 
         browser.waitUntil(() => {
-            return ($('#cart span.quantity').getText()=='1')
-        }, 500, 'Item is not added');
+            return ($('#cart span.quantity').getText()== String(+quantity + +"1"))
+        }, 5000, 'Item is not added');
 
         addToCart.checkItemInCart();     
 
@@ -70,28 +103,23 @@ describe('Buy a duck', function () {
         
         checkout.saveChanges();
         checkout.confirmOrder();
-        /*expect(confirmation.isLoaded()).to.equal(
-            true,
-            "Expected that confirmation page appears"
-          );
-          expect(confirmation.confirmationTitle()).to.match(
-            /Your order #.* is successfully completed!/
-        );*/
     }); 
       
     it("Buying yellow duck without options", function() {
+        productBox.openingProductBox();
         addToCart.addItemToCart();
         addToCart.waitForPopUp();  
     });  
 
     it("Buying yellow duck with Different Shipping Address checked", function() {
+        productBox.openingProductBox();
         setOptions.selectItemSize('Small');
         addToCart.addItemToCart();
         productBox.closeProductBox();
 
         browser.waitUntil(() => {
-            return ($('#cart span.quantity').getText()=='1')
-        }, 500, 'Item is not added');
+            return ($('#cart span.quantity').getText()== String(+quantity + +"1"))
+        }, 5000, 'Item is not added');
 
         addToCart.checkItemInCart();     
 
@@ -115,23 +143,17 @@ describe('Buy a duck', function () {
         
         checkout.saveChanges();
         checkout.confirmOrder();
-        /*expect(confirmation.isLoaded()).to.equal(
-            true,
-            "Expected that confirmation page appears"
-          );
-          expect(confirmation.confirmationTitle()).to.match(
-            /Your order #.* is successfully completed!/
-        );*/
     });
 
     it("Buying yellow duck with Create Account checked", function() {
+        productBox.openingProductBox();
         setOptions.selectItemSize('Small');
         addToCart.addItemToCart();
         productBox.closeProductBox();
 
         browser.waitUntil(() => {
-            return ($('#cart span.quantity').getText()=='1')
-        }, 500, 'Item is not added');
+            return ($('#cart span.quantity').getText()== String(+quantity + +"1"))
+        }, 5000, 'Item is not added');
 
         addToCart.checkItemInCart();     
 
@@ -151,13 +173,6 @@ describe('Buy a duck', function () {
         
         checkout.saveChanges();
         checkout.confirmOrder();
-        /*expect(confirmation.isLoaded()).to.equal(
-            true,
-            "Expected that confirmation page appears"
-          );
-          expect(confirmation.confirmationTitle()).to.match(
-            /Your order #.* is successfully completed!/
-        );*/
     });
 })
 

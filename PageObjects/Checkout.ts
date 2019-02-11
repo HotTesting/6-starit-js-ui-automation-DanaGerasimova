@@ -71,6 +71,12 @@ export class Checkout{
         $(phoneInput).setValue(phone);
     }
 
+    checkPhone(): any {
+        const phoneInput = 'input[name="phone"]'
+        browser.waitForVisible(phoneInput, 5000);
+        $(phoneInput).getValue();
+    }
+
     typeEmail(email: string): any {
         const emailInput = 'input[name="email"]'
         browser.waitForVisible(emailInput, 5000);
@@ -83,10 +89,22 @@ export class Checkout{
         $(cityInput).setValue(city);
     }
 
+    checkCity(): any {
+        const cityInput = 'input[name="city"]'
+        browser.waitForVisible(cityInput, 5000);
+        $(cityInput).getValue();
+    }
+
     typePostCode(postCode: string): any {
         const postCodeInput = 'input[name="postcode"]'
         browser.waitForVisible(postCodeInput, 5000);
         $(postCodeInput).setValue(postCode);
+    }
+
+    checkPostCode(): any {
+        const postCodeInput = 'input[name="postcode"]'
+        browser.waitForVisible(postCodeInput, 5000);
+        $(postCodeInput).getValue();
     }
 
     typeAddress2(address2: string): any {
@@ -95,10 +113,22 @@ export class Checkout{
         $(address2Input).setValue(address2);
     }
 
+    checkAddress2(): any {
+        const address2Input = 'input[name="address2"]'
+        browser.waitForVisible(address2Input, 5000);
+        $(address2Input).getValue();
+    }
+
     typeAddress1(address1: string): any {
         const address1Input = 'input[name="address1"]'
         browser.waitForVisible(address1Input, 5000);
         $(address1Input).setValue(address1);
+    }
+
+    checkAddress1(): any {
+        const address1Input = 'input[name="address1"]'
+        browser.waitForVisible(address1Input, 5000);
+        $(address1Input).getValue();
     }
 
     typeLastName(lastName: string): any {
