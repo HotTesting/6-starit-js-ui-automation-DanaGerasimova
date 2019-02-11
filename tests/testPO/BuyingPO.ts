@@ -1,4 +1,4 @@
-import {homePage, productBox, setOptions, addToCart, checkout, confirmation} from "../PageObjects";
+import {homePage, productBox, setOptions, addToCart, checkout, confirmation} from "../../PageObjects";
 
 
 describe('Buy a duck', function () {

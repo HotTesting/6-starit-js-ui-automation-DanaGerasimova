@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-describe('Create Account', function () {
+describe.skip('Create Account', function () {
 
     before(function() {
         browser.url('/');

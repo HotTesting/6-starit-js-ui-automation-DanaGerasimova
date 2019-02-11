@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-describe('Customer Service', function () {
+describe.skip('Customer Service', function () {
     before(function() {
         browser.url('/');
         browser.click('.customer-service');

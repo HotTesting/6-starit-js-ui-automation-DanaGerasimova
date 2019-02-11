@@ -1,6 +1,6 @@
 import { assert } from "chai";
 
-describe('Buy a duck', function () {
+describe.skip('Buy a duck', function () {
 
     before(function() {
         browser.url('/');
